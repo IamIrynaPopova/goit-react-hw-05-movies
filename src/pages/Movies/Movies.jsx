@@ -1,18 +1,18 @@
-import { Link, useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import GetMovie from '../../services/GetMovie';
+import {GetMovie} from '../../services/GetMovie';
+import MoviesList from '../../components/MoviesList/MoviesList';
 
 const Movies = () => {
   const [movies, setMovies] = useState([]);
   const [value, setValue] = useState('');
   const [searchParams, setSearchParams] = useSearchParams();
-  console.log(searchParams);
-
+ 
   useEffect(() => {
     if (value === '') {
       return;
-    }
-    GetMovie(value)
+    }   
+  GetMovie(value) 
       .then(response => {
         if (response.ok) {
           return response.json();
@@ -25,6 +25,7 @@ const Movies = () => {
 
   const onSearchMovies = e => {
     e.preventDefault();
+    setMovies([]);
     const form = e.currentTarget;
     setValue(form.elements.input.value);
     form.reset();
@@ -51,14 +52,7 @@ const Movies = () => {
         </button>
       </form>
       {movies.length > 0 &&
-        movies.map(movie => {
-          const { title, id } = movie;
-          return (
-            <Link to={`${title}`} key={id}>
-              {title}
-            </Link>
-          );
-        })}
+     <MoviesList movies={movies} />}
     </>
   );
 };
