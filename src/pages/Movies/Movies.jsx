@@ -7,7 +7,6 @@ const Movies = () => {
   const [movies, setMovies] = useState([]);
   const [value, setValue] = useState('');
   const [searchParams, setSearchParams] = useSearchParams();
-  console.log(searchParams);
   const [error, setError] = useState(null);
   useEffect(() => {
     if (value === '') {
