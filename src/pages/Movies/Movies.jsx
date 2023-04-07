@@ -22,7 +22,7 @@ const Movies = () => {
         return setMovies(response.results);
       })
       .catch(error => setError(error));
-  }, [value]);
+       }, [value]);
 
   const onSearchMovies = e => {
     e.preventDefault();
@@ -53,7 +53,7 @@ const Movies = () => {
           Search
         </button>
       </form>
-      {movies.length > 0 && <MoviesList movies={movies} />}
+      {movies && <MoviesList movies={movies} />}
     </>
   );
 };
