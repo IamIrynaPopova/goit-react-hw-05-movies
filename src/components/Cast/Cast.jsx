@@ -1,6 +1,7 @@
 import { GetMovieCast } from '../../services/GetMovie';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import img from 'image/img.jpg';
 
 const Cast = () => {
   const { moviesId } = useParams();
@@ -23,11 +24,16 @@ const Cast = () => {
           const { id, name, profile_path, character } = actor;
           return (
             <li key={id}>
-              <img
-                width="250"
-                src={`https://image.tmdb.org/t/p/w500${profile_path}`}
-                alt={name}
-              />
+              {profile_path ? (
+                <img
+                  width="250"
+                  src={`https://image.tmdb.org/t/p/w500${profile_path}`}
+                  alt={name}
+                />
+              ) : (
+                <img width="250" src={img} alt={name}/>
+              )}
+
               <p>{name}</p>
               <p>{character}</p>
             </li>

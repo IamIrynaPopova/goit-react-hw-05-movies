@@ -1,18 +1,13 @@
 import { useState, useEffect } from 'react';
 import MoviesList from '../../components/MoviesList/MoviesList';
-import {GetMovieTrending} from '../../services/GetMovie';
+import { GetMovieTrending } from '../../services/GetMovie';
 
 const Home = () => {
-   const [movies, setMovies] = useState([]);
+  const [movies, setMovies] = useState([]);
   const [error, setError] = useState(null);
 
   useEffect(() => {
     GetMovieTrending()
-      .then(response => {
-        if (response.ok) {
-          return response.json();
-        }
-      })
       .then(response => {
         return setMovies(response.results);
       })

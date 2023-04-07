@@ -1,4 +1,8 @@
-import { useParams, useLocation, Link, Outlet } from 'react-router-dom';
+import {
+  useParams,
+  useLocation,
+  Link,
+  Outlet} from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { GetMovieDetails } from '../../services/GetMovie';
 import { AiOutlineArrowLeft } from 'react-icons/ai';
@@ -6,6 +10,7 @@ const MovieDetails = () => {
   const { moviesId } = useParams();
   const [error, setError] = useState(null);
   const [film, setFilm] = useState();
+  // const [searchParams, setSearchParams] = useSearchParams();
   const location = useLocation();
   // console.log(location.state);
   const backLinkLocation = location.state?.from ?? '/movies';
@@ -51,7 +56,7 @@ const MovieDetails = () => {
           <h4> Additional information</h4>
           <ul>
             <Link to="cast">Cast</Link>
-            <Link>Reviews</Link>
+            <Link to="reviews">Reviews</Link>
           </ul>
           <Outlet />
         </>

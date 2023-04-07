@@ -5,8 +5,8 @@ import MoviesList from '../../components/MoviesList/MoviesList';
 
 const Movies = () => {
   const [movies, setMovies] = useState([]);
-  const [value, setValue] = useState('');
   const [searchParams, setSearchParams] = useSearchParams();
+  const value = searchParams.get('query') ?? '';
   const [error, setError] = useState(null);
   useEffect(() => {
     if (value === '') {
@@ -14,27 +14,19 @@ const Movies = () => {
     }
     GetMovie(value)
       .then(response => {
-        if (response.ok) {
-          return response.json();
-        }
-      })
-      .then(response => {
         return setMovies(response.results);
       })
       .catch(error => setError(error));
-       }, [value]);
+  }, [value]);
 
   const onSearchMovies = e => {
     e.preventDefault();
     setMovies([]);
     const form = e.currentTarget;
-    setValue(form.elements.input.value);
-    form.reset();
-  };
-  const onChange = e => {
-    const query = e.target.value;
+    const query = form.elements.input.value;
     const nextParams = query !== '' ? { query } : {};
     setSearchParams(nextParams);
+    form.reset();
   };
 
   return (
@@ -47,7 +39,6 @@ const Movies = () => {
           placeholder="Search"
           name="input"
           autoComplete="off"
-          onChange={onChange}
         />
         <button className="button" type="submit">
           Search
