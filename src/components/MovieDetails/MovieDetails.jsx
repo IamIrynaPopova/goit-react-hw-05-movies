@@ -5,7 +5,7 @@ import {
   NavLink,
   Outlet,
 } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import { GetMovieDetails } from '../../services/GetMovie';
 import { AiOutlineArrowLeft } from 'react-icons/ai';
 import css from './MovieDetails.module.css';
@@ -74,8 +74,10 @@ const MovieDetails = () => {
                 Reviews
               </NavLink>
             </ul>
-          </div>
-          <Outlet />
+          </div>{' '}
+          <Suspense>
+            <Outlet />
+          </Suspense>
         </>
       )}
     </div>
