@@ -1,0 +1,23 @@
+.list {
+  background-color: rgb(66, 66, 63);
+  padding: 30px;
+  margin: 0 auto;
+  color: white;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.item {
+  list-style-type: circle;
+  padding: 5px;
+  margin: 5px 70px 5px 5px;
+  border: 2px solid rgb(168, 163, 163);
+  border-radius: 10px;
+  width: 35%;
+}
+
+.link {
+  color: white;
+  text-decoration: none;
+}

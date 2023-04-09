@@ -2,6 +2,7 @@ import { useSearchParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { GetMovie } from '../../services/GetMovie';
 import MoviesList from '../../components/MoviesList/MoviesList';
+import css from './Movies.module.css';
 
 const Movies = () => {
   const [movies, setMovies] = useState([]);
@@ -32,19 +33,19 @@ const Movies = () => {
   return (
     <>
       {error && <h1>{error.message}</h1>}
-      <form className="form" onSubmit={onSearchMovies}>
+      <form className={css.form} onSubmit={onSearchMovies}>
         <input
-          className="input"
+          className={css.input}
           type="text"
           placeholder="Search"
           name="input"
           autoComplete="off"
         />
-        <button className="button" type="submit">
+        <button className={css.button} type="submit">
           Search
         </button>
       </form>
-      {movies && <MoviesList movies={movies} />}
+      {movies && value&&<MoviesList movies={movies} />}
     </>
   );
 };
