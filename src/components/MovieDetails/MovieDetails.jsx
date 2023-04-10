@@ -15,7 +15,7 @@ const MovieDetails = () => {
   const [film, setFilm] = useState();
   const location = useLocation();
   const backLinkLocation = location.state?.from ?? '/movies';
-  const setActive = ({ isActive }) => (isActive ? 'active' : 'link');
+   const setActive = ({ isActive }) => (isActive ? 'active' : 'link');
   useEffect(() => {
     GetMovieDetails(moviesId)
       .then(response => {
@@ -67,10 +67,10 @@ const MovieDetails = () => {
           <div className={css.film_additional}>
             <h4 className={css.title_additional}> Additional information</h4>
             <ul className={css.list}>
-              <NavLink className={setActive} to="cast">
+              <NavLink className={setActive} to="cast" state={{ from: backLinkLocation }}>
                 Cast
               </NavLink>
-              <NavLink className={setActive} to="reviews">
+              <NavLink className={setActive} to="reviews" state={{ from: backLinkLocation }}>
                 Reviews
               </NavLink>
             </ul>

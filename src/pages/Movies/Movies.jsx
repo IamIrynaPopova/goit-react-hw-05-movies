@@ -45,7 +45,7 @@ const Movies = () => {
           Search
         </button>
       </form>
-      {movies && value&&<MoviesList movies={movies} />}
+      {movies && value&&<MoviesList movies={movies}/>}
     </>
   );
 };
